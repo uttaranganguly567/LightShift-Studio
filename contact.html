@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | LightShift Studio</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap">
+  <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // FORCE REMOVE PAGECLIP OVERLAY ANY TIME IT APPEARS
+  const observer = new MutationObserver(() => {
+    const overlay = document.querySelector(".pageclip-form__success, .pageclip-message");
+    if (overlay) overlay.remove();
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+
+  // REGISTER CUSTOM SUCCESS HANDLER
+  Pageclip.form("#contact-form", {
+    onResponse: function () {
+
+      let msg = document.getElementById("custom-success");
+      if (!msg) {
+        msg = document.createElement("div");
+        msg.id = "custom-success";
+        msg.textContent = "Thanks! We'll get back to you soon.";
+        msg.style.textAlign = "center";
+        msg.style.marginTop = "16px";
+        msg.style.color = "rgba(170,255,230,0.85)";
+        msg.style.fontSize = "0.9rem";
+        msg.style.animation = "fadein 0.6s ease";
+        document.querySelector(".form-card").appendChild(msg);
+      }
+    }
+  });
+
+});
+</script>
+
+<style>
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <a class="header-logo-link" href="index.html">
+          <img src="logo.svg" alt="LightShift Studio logo">
+        </a>
+        <div class="header-text">
+          <h1>LightShift Studio</h1>
+        </div>
+      </div>
+      <nav class="header-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="demos.html">Demos</a>
+        <a href="contact.html" class="active" aria-current="page">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero contact-hero">
+      <h1 class="hero-heading fade-in">Book a Free AI Consultation</h1>
+      <p class="fade-up">Tell us about your goals. We'll recommend the best AI workflows, tools, or demos for your team.</p>
+    </section>
+
+    <section class="page-section">
+      <div class="grid cols-3">
+        <article class="card fade-up" style="background: radial-gradient(120% 140% at 20% 20%, rgba(54, 240, 199, 0.14), rgba(11, 14, 22, 0.9)); box-shadow: 0 24px 48px rgba(31, 214, 164, 0.12);">
+          <h3>What You Get</h3>
+          <p>A focused session where we map your workflow, identify automation opportunities, and recommend AI tools tailored to your goals.</p>
+        </article>
+        <article class="card fade-up delay-1" style="background: radial-gradient(120% 140% at 80% 20%, rgba(31, 214, 164, 0.14), rgba(11, 14, 22, 0.9)); box-shadow: 0 24px 48px rgba(54, 240, 199, 0.12);">
+          <h3>Who It's For</h3>
+          <p>Sales teams, founders, operations leads, marketing teams, and anyone seeking bespoke AI workflow guidance.</p>
+        </article>
+        <article class="card fade-up delay-2" style="background: radial-gradient(120% 140% at 50% 80%, rgba(31, 214, 164, 0.14), rgba(11, 14, 22, 0.9)); box-shadow: 0 24px 48px rgba(22, 196, 156, 0.12);">
+          <h3>How It Works</h3>
+          <p>Submit the form, receive a reply within 24 hours, then join a tailored call where we walk through recommendations and a live demo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <article class="card form-card fade-up delay-1">
+        <form id="contact-form" action="https://send.pageclip.co/ArdzR5DeXU2pqdAUQeCHYPM94443E8Xk/Contact_Form"
+          class="pageclip-form"
+          method="post">
+
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" placeholder="Your Name" required />
+
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="you@company.com" required />
+
+          <label for="company">Company <span class="label-optional">(optional)</span></label>
+          <input id="company" type="text" name="company" placeholder="Company" />
+
+          <label for="industry">Industry or business type</label>
+          <select id="industry" name="industry">
+            <option value="" selected>Select your niche</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="saas">SaaS</option>
+            <option value="agency">Agency / Services</option>
+            <option value="real-estate">Real Estate</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="education">Education</option>
+            <option value="finance">Finance</option>
+            <option value="manufacturing">Manufacturing</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label for="demo">Which workflow or demo are you exploring? <span class="label-optional">(optional)</span></label>
+          <input id="demo" type="text" name="demo" placeholder="Example: Lead Qualification Tool" data-autofill="requested-demo" />
+
+          <label for="problem">What problem are you trying to solve? <span class="label-optional">(optional)</span></label>
+          <textarea id="problem" name="problem" placeholder="Describe the challenge or process you'd like to improve"></textarea>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your goals or timeline" required></textarea>
+
+          <button type="submit" class="button pageclip-form__submit">
+            <span>Send Request</span>
+          </button>
+
+        </form>
+        <p class="form-success-message" id="consultation-success" role="status" aria-live="polite"></p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">© LightShift Studio</footer>
+  <script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
+  <script>
+    // Custom Pageclip success confirmation (Option A)
+    (function () {
+      var successEl = document.getElementById('consultation-success');
+      var formEl = document.getElementById('contact-form');
+
+      if (!successEl || !formEl) {
+        return;
+      }
+
+      function hideMessage() {
+        successEl.classList.remove('is-visible');
+        successEl.textContent = '';
+      }
+
+      function showMessage() {
+        successEl.textContent = "Thanks! We'll get back to you soon.";
+        successEl.classList.add('is-visible');
+      }
+
+      (function waitForPageclip() {
+        if (!window.Pageclip || typeof Pageclip.form !== 'function') {
+          setTimeout(waitForPageclip, 60);
+          return;
+        }
+
+        Pageclip.form('#contact-form', {
+          onSubmit: function () {
+            hideMessage();
+          },
+          onResponse: function (error) {
+            if (!error) {
+              showMessage();
+            }
+          },
+          successTemplate: ''
+        });
+      })();
+    })();
+  </script>
+</body>
+</html>
